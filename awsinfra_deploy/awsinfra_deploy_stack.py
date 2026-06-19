@@ -9,7 +9,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class AwsinfraCdkPythonStack(Stack):
+class AwsinfraDeployStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -56,9 +56,9 @@ class AwsinfraCdkPythonStack(Stack):
         source_output = codepipeline.Artifact()
         source_action = codepipeline_actions.GitHubSourceAction(
             action_name='GitHub_Source',
-            owner='03sarath',  # Replace with your GitHub username
-            repo='aws-ckd-gettingstarted',  # Replace with your repository name
-            branch='main',
+            owner='tariquedts',  # Replace with your GitHub username
+            repo='awsinfra-deploy',  # Replace with your repository name
+            branch='master',
             oauth_token=SecretValue.secrets_manager('github-token'),
             output=source_output
         )
